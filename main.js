@@ -520,7 +520,7 @@ window.addEventListener('scroll', debounce(() => {
  */
 function preloadImages() {
     const images = [
-        'images/profile1.png'
+        'images/profile1.jpg'
     ];
     
     images.forEach(src => {

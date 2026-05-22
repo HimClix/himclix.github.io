@@ -1,5 +1,5 @@
 /**
- * Lokesh B M Portfolio
+ * Himanshu Asati Portfolio
  * Interactive JavaScript for PostHog-inspired design
  */
 
@@ -204,8 +204,8 @@ function initTypewriter() {
     const roles = [
         'Backend Engineer',
         'Go Developer',
-        'System Designer',
-        'Problem Solver'
+        'Systems Thinker',
+        'Fintech Builder'
     ];
     
     const titleSub = document.querySelector('.title-sub');
@@ -520,9 +520,7 @@ window.addEventListener('scroll', debounce(() => {
  */
 function preloadImages() {
     const images = [
-        'images/profile1.jpg',
-        'images/newsio.png',
-        'images/portitem1.png'
+        'images/profile1.png'
     ];
     
     images.forEach(src => {

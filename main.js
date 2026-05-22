@@ -119,10 +119,10 @@ function initScrollAnimations() {
     
     const observerOptions = {
         root: null,
-        rootMargin: '0px',
-        threshold: 0.1
+        rootMargin: '50px',
+        threshold: 0.05
     };
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -133,25 +133,23 @@ function initScrollAnimations() {
             }
         });
     }, observerOptions);
-    
-    animatedElements.forEach((el, index) => {
+
+    animatedElements.forEach((el) => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = `opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.08}s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.08}s`;
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = `opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)`;
         observer.observe(el);
     });
     
     // Special animation for timeline items
     const timelineItems = document.querySelectorAll('.timeline-item');
     const timelineObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
+        entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, index * 150);
+                entry.target.classList.add('visible');
             }
         });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.1, rootMargin: '50px' });
     
     timelineItems.forEach(item => {
         timelineObserver.observe(item);
@@ -160,14 +158,13 @@ function initScrollAnimations() {
     // Staggered reveal for project cards
     const projectCards = document.querySelectorAll('.project-card');
     const projectObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
+        entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                entry.target.style.transitionDelay = `${index * 0.1}s`;
                 entry.target.classList.add('visible');
                 projectObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05, rootMargin: '50px' });
     
     projectCards.forEach(card => {
         card.classList.add('reveal');

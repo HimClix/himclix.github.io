@@ -132,9 +132,9 @@
 /* Reveal from bottom */
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(20px);
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal.visible {
@@ -2075,9 +2075,36 @@ button {
     html {
         font-size: 15px;
     }
-    
+
+    /* Prevent horizontal overflow on mobile */
+    .about-content,
+    .about-text,
+    .about-visual,
+    .about-fun,
+    .code-window,
+    .code-content {
+        max-width: 100%;
+        overflow-x: auto;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .about-text p,
+    .about-intro,
+    .fun-list li {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+
+    .code-content {
+        white-space: pre-wrap;
+        word-break: break-all;
+    }
+
     .section-container {
         padding: var(--spacing-2xl) var(--spacing-md);
+        overflow-x: hidden;
     }
     
     .nav-container {

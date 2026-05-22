@@ -1,0 +1,4 @@
+main.js
+  83021fb0-39fc-479e-894b-3c879aaee12f:2026-05-22T06:07:34.029Z 2,207-208,523
+---
+{"schema_version": "authorship/3.0.0", "base_commit_sha": "HEAD~1", "prompts": {"83021fb0-39fc-479e-894b-3c879aaee12f:2026-05-22T06:07:34.029Z": {"agent_id": {"tool": "claude_code", "model": ""}, "human_author": "himanshu.asati@razorpay.com", "accepted_lines": 4, "overriden_lines": 0}}}

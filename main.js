@@ -109,66 +109,25 @@ function initNavigation() {
 
 /**
  * Scroll Animations Module
- * Intersection Observer for fade-in animations
+ * Simple fade-in on scroll — no hidden content, no layout shifts
  */
 function initScrollAnimations() {
     const animatedElements = document.querySelectorAll(
         '.section-header, .timeline-item, .skill-category, .project-card, ' +
         '.about-text, .about-visual, .pitch-card, .contact-card'
     );
-    
-    const observerOptions = {
-        root: null,
-        rootMargin: '50px',
-        threshold: 0.05
-    };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
                 entry.target.classList.add('visible');
                 observer.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.05, rootMargin: '80px' });
 
     animatedElements.forEach((el) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = `opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)`;
         observer.observe(el);
-    });
-    
-    // Special animation for timeline items
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    const timelineObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '50px' });
-    
-    timelineItems.forEach(item => {
-        timelineObserver.observe(item);
-    });
-    
-    // Staggered reveal for project cards
-    const projectCards = document.querySelectorAll('.project-card');
-    const projectObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                projectObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.05, rootMargin: '50px' });
-    
-    projectCards.forEach(card => {
-        card.classList.add('reveal');
-        projectObserver.observe(card);
     });
 }
 
